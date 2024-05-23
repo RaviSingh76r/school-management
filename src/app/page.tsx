@@ -2,19 +2,11 @@
 
 import React from "react"
 
-import { Button } from "@nextui-org/react"
-import {SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
-
 const Page = () => {
   return(
-    <div><header>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header></div>
+    <div>
+      Hello From the Home Page
+    </div>
   )
 }
 

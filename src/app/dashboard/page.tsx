@@ -9,8 +9,8 @@ import Login from "./components/auth/Login";
 const Page = () => {
 
 	return (
-		<div className="min-h-screen min-w-full flex items-center justify-center ">
-			<div className="flex w-full flex-col min-h-screen justify-center">
+		<div className="min-h-screen min-w-full flex items-center justify-center">
+			<div className="flex w-full flex-col min-h-screen justify-center bg-default-100">
 				<Tabs color="primary" variant="bordered" radius="full" className="w-full pt-4 items-center justify-center">
 					<Tab key="login" title="Login">
 						<Card>

@@ -54,6 +54,7 @@ const Register = () => {
 	};
 
 	return (
+		<div className="min-h-screen min-w-full flex items-center justify-center">
 		<div className="max-[760px]:w-full w-1/2 space-y-6">
 			<div className="w-full text-center">
 				<span className="text-2xl font-semibold text-default-900">
@@ -139,6 +140,7 @@ const Register = () => {
 				Register
 			</Button>
 			<Toaster />
+		</div>
 		</div>
 	);
 };

@@ -15,7 +15,13 @@ const assignmentSchema = new Schema({
   submittedBy: [{
     type: mongoose.Types.ObjectId,
     ref: "Student"
-  }]
+  }],
+  dueDate: {
+    type: string,
+  },
+  attachmentId: [
+    {type: String}
+  ]
 }, {timestamps: true})
 
 export const Assignment = mongoose.models.assignments || mongoose.model("assignments", assignmentSchema)

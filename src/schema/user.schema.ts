@@ -1,12 +1,19 @@
 import {z} from "zod"
 
-export const usernameValidation = z.string()
-  .min(8)
-  .max(24)
-  .refine(value => /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,24}$/.test(value), {
-    message: 'Invalid username. It must contain at least one uppercase letter, one lowercase letter, one digit, and be between 8 and 24 characters long.',
-    path: ['username']
-  });
+// export const usernameValidation = z.string()
+//   .min(8)
+//   .max(24)
+//   .refine(value => /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,24}$/.test(value), {
+//     message: 'Invalid username. It must contain at least one uppercase letter, one lowercase letter, one digit, and be between 8 and 24 characters long.',
+//     path: ['username']
+//   });
+
+// Define a schema for username validation
+const usernameValidation = z.string()
+  .min(3, { message: "Username must be at least 3 characters long" })
+  .max(20, { message: "Username cannot exceed 20 characters" })
+  // .regex(/^[a-zA-Z0-9_]+$/, { message: "Username can only contain letters, numbers, and underscores" });
+
 
 export const emailValidation = z.string()
   .refine(value => /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/.test(value), {
@@ -30,6 +37,6 @@ export const registrationValidation = z.object({
 })
 
 export const loginValidation = z.object({
-  username: usernameValidation,
+  username: z.string(),
   password: passwordValidation
 })

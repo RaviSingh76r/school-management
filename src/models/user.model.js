@@ -1,11 +1,6 @@
 import mongoose, {Schema} from "mongoose";
 
 const userSchema = new Schema({
-  clerkId: {
-    type: String,
-    required: true,
-    unique: true
-  },
   username: {
     type: String,
     required: true,
@@ -27,6 +22,10 @@ const userSchema = new Schema({
     unique: true,
     lowercase: true
   },
+  password: {
+    type: String,
+    required: true
+  },
   role: {
     type: String,
     required: true,
@@ -41,6 +40,10 @@ const userSchema = new Schema({
   avatar: {
     type: String
   },
+  studentId: {
+    type: mongoose.Types.ObjectId,
+    ref: "Student"
+  }
 }, {timestamps: true})
 
 export const User = mongoose.models.users || mongoose.model("users", userSchema)

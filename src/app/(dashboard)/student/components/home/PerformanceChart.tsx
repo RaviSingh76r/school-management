@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { ChartOptions } from 'chart.js';
+import { Skeleton } from '@nextui-org/react';
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +23,11 @@ ChartJS.register(
   Legend
 );
 
-const PerformanceGraph: React.FC = () => {
+interface PerformanceGraphProps{
+  isLoaded: boolean
+}
+
+const PerformanceGraph: React.FC<PerformanceGraphProps> = ({isLoaded}) => {
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
@@ -79,9 +84,11 @@ const PerformanceGraph: React.FC = () => {
   };
 
   return (
-    <div>
+   <div className='p-4 min-w-full'>
+     <Skeleton isLoaded={isLoaded} className='rounded-lg' >
       <Line data={data} options={options} />
-    </div>
+    </Skeleton>
+   </div>
   );
 };
 

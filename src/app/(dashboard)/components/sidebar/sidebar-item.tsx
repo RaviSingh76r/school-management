@@ -7,12 +7,12 @@ import clsx from "clsx";
 
 interface Props {
 	title: string;
-	icon: React.ReactNode;
+	icon: any;
 	isActive?: boolean;
 	href?: string;
 }
 
-export const SidebarItem = ({ icon, title, isActive, href = "" }: Props) => {
+export const SidebarItem = ({ icon: Icon, title, isActive, href = "" }: Props) => {
 	const { collapsed, setCollapsed } = useSidebarContext();
 
 	const handleClick = () => {
@@ -35,7 +35,7 @@ export const SidebarItem = ({ icon, title, isActive, href = "" }: Props) => {
 						isActive ? "text-primary-500" : "text-default-400"
 					)}
 				>
-					{icon}
+					{<Icon />}
 				</span>
 				<span className="text-default-900">{title}</span>
 			</div>

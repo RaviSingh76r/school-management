@@ -6,7 +6,7 @@ import { SupportIcon } from "@/components/icons/navbar/index";
 import { BurguerButton } from "./burguer-button";
 import { NotificationsDropdown } from "./notifications-dropdown";
 import { UserDropdown } from "./user-dropdown";
-import { SearchIcon } from "@/components/icons/Searchicon";
+import {SearchIcon} from "@/components/icons/index"
 import { DarkModeSwitch } from "./darkmodeswitch";
 
 interface Props {

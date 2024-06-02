@@ -4,9 +4,9 @@ import React from "react";
 
 const Page = () => {
 	return (
-		<div>
+		<div className="min-h-screen min-w-full">
 			{/* Hero Section */}
-			<section className="bg-blue-600 text-white">
+			<section className="bg-blue-600 text-white h-screen flex flex-col items-center justify-center">
 				<div className="container mx-auto px-4 py-24 text-center">
 					<h2 className="text-4xl font-bold mb-4">
 						Empowering Students, Teachers, and Parents

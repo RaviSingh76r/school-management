@@ -18,8 +18,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
-				<div className="min-h-screen min-w-full dark">
+			<body className={`dark ${inter.className}`}>
+				<div className="min-h-screen min-w-full ">
 					<Providers>{children}</Providers>
 				</div>
 			</body>

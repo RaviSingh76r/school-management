@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import connectDb from "@/config/dbConfig";
 import { User } from "@/models/user.model";
 import { Student } from "@/models/student.model";
-// import { Teacher } from "@/models/teacher.model";
+import { Teacher } from "@/models/teacher.model";
 // import { Parent } from "@/models/parent.model";
 import bcryptjs from "bcryptjs";
 
@@ -46,13 +46,13 @@ async function registerUser(userDetails: IRegistrationValue): Promise<{ success:
           await newStudent.save();
         }
         break;
-      // case "teacher":
-      //   const existingTeacher = await Teacher.findOne({ userId: savedUser._id });
-      //   if (!existingTeacher) {
-      //     const newTeacher = new Teacher({ userId: savedUser._id });
-      //     await newTeacher.save();
-      //   }
-      //   break;
+      case "teacher":
+        const existingTeacher = await Teacher.findOne({ userId: savedUser._id });
+        if (!existingTeacher) {
+          const newTeacher = new Teacher({ userId: savedUser._id });
+          await newTeacher.save();
+        }
+        break;
       // case "parent":
       //   const existingParent = await Parent.findOne({ userId: savedUser._id });
       //   if (!existingParent) {

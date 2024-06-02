@@ -10,21 +10,23 @@ interface RequestBodyTypes {
   title: string;
   description: string;
   className: string;
+  section: string
   dueDate?: string;
   attachmentId?: string;
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest, {params}: {params: {id: string}}) {
   // Connect to the database
   connectDb();
 
   try {
     // Parse the request body
     const reqBody: RequestBodyTypes = await request.json();
-    const { title, description, className, dueDate, attachmentId } = reqBody;
+    const { title, description, className, dueDate, attachmentId, section } = reqBody;
+    const {id} = params
 
     // Find the class by className
-    const foundClass = await Class.findOne({ className });
+    const foundClass = await Class.findOne({ className, section });
 
     // If class not found, return a 404 response
     if (!foundClass) {
@@ -44,16 +46,17 @@ export async function POST(request: NextRequest) {
       classId: foundClass._id,
       dueDate,
       attachmentId: [attachmentId],
+      createdBy: id
     });
 
     // Save the new assignment
-    await newAssignment.save();
+    const savedAssignment = await newAssignment.save();
 
     // Get IDs of all students in the class
-    const studentIds = foundClass.students;
+    const studentIds = foundClass.studentIds;
 
     // Update all students in the class with the assignment ID
-    await Student.updateMany(
+    const updatedStudent = await Student.updateMany(
       { _id: { $in: studentIds } },
       { $push: { assignments: newAssignment._id } }
     );
@@ -63,7 +66,7 @@ export async function POST(request: NextRequest) {
       {
         message: "Assignment created and associated with students",
         success: true,
-        assignment: newAssignment,
+        assignment: savedAssignment,
       },
       { status: 201 }
     );

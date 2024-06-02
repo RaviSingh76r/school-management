@@ -9,7 +9,7 @@ export async function GET(request: NextRequest, {params}: {params: {id: string}}
   try {
     const id = params.id
 
-    const student = await Student.findOne({userId: id})
+    const student = await Student.findOne({userId: id}).select("-userId -classId -parentId -assignment")
 
     if(!student){
       return NextResponse.json({
@@ -18,7 +18,11 @@ export async function GET(request: NextRequest, {params}: {params: {id: string}}
       }, {status: 404})
     }
 
-    
+    return NextResponse.json({
+      message: "Student found",
+      student,
+      success: true
+    }, {status: 201})
   } catch (error:any) {
     return NextResponse.json({
       message: "Error while acquiring student data",

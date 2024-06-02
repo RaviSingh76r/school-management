@@ -1,7 +1,7 @@
 "use client";
 
-import { Input, Tooltip, Navbar, NavbarContent } from "@nextui-org/react";
 import React from "react";
+import { Input, Tooltip, Navbar, NavbarContent } from "@nextui-org/react";
 import { SupportIcon } from "@/components/icons/navbar/index";
 import { BurguerButton } from "./burguer-button";
 import { NotificationsDropdown } from "./notifications-dropdown";
@@ -26,7 +26,7 @@ export const NavbarWrapper = ({ children }: Props) => {
 				<NavbarContent className="md:hidden">
 					<BurguerButton />
 				</NavbarContent>
-				
+
 				<NavbarContent className="w-full max-md:hidden">
 					<Input
 						startContent={<SearchIcon />}
@@ -38,7 +38,6 @@ export const NavbarWrapper = ({ children }: Props) => {
 						}}
 						placeholder="Search..."
 					/>
-
 				</NavbarContent>
 				<NavbarContent
 					justify="end"
@@ -61,7 +60,6 @@ export const NavbarWrapper = ({ children }: Props) => {
 					<NavbarContent className="bg-default-50">
 						<UserDropdown />
 					</NavbarContent>
-
 				</NavbarContent>
 			</Navbar>
 			{children}

@@ -9,9 +9,10 @@ import { loginValidation } from "@/schema/user.schema";
 // Next JS Stuffs
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, Link, Checkbox } from "@nextui-org/react";
 
 import toast, { Toaster } from "react-hot-toast";
+
 
 type FormData = z.infer<typeof loginValidation>;
 
@@ -36,7 +37,7 @@ const Login: React.FC = () => {
 			});
 			if (res?.ok) {
 				toast.success("User logged in");
-				router.replace(`/${session?.user.role}`);
+				router.push(`/${session?.user.role}`);
 			}
 		} catch (error) {
 			console.error("Login failed:", error);
@@ -48,7 +49,7 @@ const Login: React.FC = () => {
 	};
 
 	return (
-		<div className="w-full min-h-screen max-w-md mx-auto p-4 space-y-4  rounded-lg shadow-lg">
+		<div className="w-full min-h-screen max-w-md mx-auto p-4 space-y-4 flex items-center justify-center flex-col rounded-lg shadow-lg">
 			<div className="w-full text-center">
 				<span className="text-2xl font-semibold text-default-900">
 					Welcome back! 🔐
@@ -79,12 +80,20 @@ const Login: React.FC = () => {
 				onChange={(e) => setFormData({ ...formData, password: e.target.value })}
 				isReadOnly={isReadOnly}
 			/>
+			<div className="min-w-full flex items-center justify-between">
+				<div className="flex">
+					<Checkbox color="primary" />
+					<p className="text-lg text-default-900">Remember Me!</p>
+				</div>
+					<Link href="/auth/forgot-password" color="foreground" size="md" >Forgot Password?</Link>
+			</div>
 			<Button
 				size="md"
 				isLoading={isLoading}
 				onClick={handleLogin}
 				variant="flat"
 				className="w-full"
+				color="primary"
 			>
 				Login
 			</Button>

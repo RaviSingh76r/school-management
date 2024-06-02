@@ -20,8 +20,6 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials: any): Promise<any> {
         await connectDb();
 
-        console.log("Credentials received:", credentials);
-
         // Check if credentials are defined
         if (!credentials?.username || !credentials?.password) {
           console.error("Credentials are missing:", credentials);

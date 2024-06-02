@@ -18,7 +18,7 @@ const studentSchema = new Schema(
 				Date: Date,
 			},
 		],
-		achievements: [{ type: String }],
+		achievements: [{ type: String, default: "" }],
 		subject: [
 			{
 				type: mongoose.Types.ObjectId,
@@ -28,13 +28,22 @@ const studentSchema = new Schema(
 		],
 		classRank: {
 			type: String,
+			default: "",
 		},
-		assignments: [{ type: mongoose.Types.ObjectId, ref: "Assignment" }],
+		assignments: [
+			{
+				type: mongoose.Types.ObjectId,
+				ref: "Assignment",
+				isCompleted: Boolean,
+				default: false
+			},
+		],
 		parentId: [
 			{
 				type: mongoose.Types.ObjectId,
 				ref: "Parent",
 				relationShip: String,
+				default: []
 			},
 		],
 	},

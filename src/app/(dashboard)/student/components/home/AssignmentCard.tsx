@@ -12,7 +12,8 @@ import {
 	Avatar,
 	Skeleton,
 } from "@nextui-org/react";
-import { EditIcon, DeleteIcon, EyeIcon } from "@/components/icons";
+import { EditIcon } from "@/components/icons/EditIcon";
+import { EyeIcon } from "@/components/icons/EyeIcon";
 
 interface AssignmentTableProps {
 	isLoaded: boolean;

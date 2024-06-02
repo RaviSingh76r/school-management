@@ -9,7 +9,7 @@ import {
   NavbarItem,
 } from "@nextui-org/react";
 import React from "react";
-import {NotificationIcon} from "@/components/icons/navbar/index"
+import { NotificationIcon } from "@/components/icons/navbar/notificationicon";
 
 export const NotificationsDropdown = () => {
   return (

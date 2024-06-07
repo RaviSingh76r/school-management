@@ -2,32 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Glassmorphism */
+.backdrop-filter {
+    backdrop-filter: blur(10px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Floating Elements Animation */
+@keyframes float1 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(20px, 20px); }
+    100% { transform: translate(0, 0); }
 }
 
+@keyframes float2 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, -20px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes float3 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+    100% { transform: translate(0, 0); }
+}
+
+.animate-float1 {
+    animation: float1 6s ease-in-out infinite;
+    top: 20%;
+    left: 30%;
+}
+
+.animate-float2 {
+    animation: float2 8s ease-in-out infinite;
+    top: 40%;
+    right: 25%;
+}
+
+.animate-float3 {
+    animation: float3 10s ease-in-out infinite;
+    bottom: 30%;
+    left: 20%;
+}
+
+/* General Styles */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    font-family: 'Inter', sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.text-gray-300 {
+    color: rgba(255, 255, 255, 0.7);
 }

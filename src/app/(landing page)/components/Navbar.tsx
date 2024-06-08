@@ -9,10 +9,10 @@ import {
 	NavbarBrand,
 	NavbarItem,
 	NavbarContent,
-	Link,
 	Button,
 	useDisclosure,
 } from "@nextui-org/react";
+import Link from "next/link";
 
 import { useModal } from "@/context/modalContext";
 
@@ -55,7 +55,7 @@ const Navbar = () => {
 			<NavbarContent justify="start">
 				<NavbarBrand>
 					<NavbarItem>
-						<Link href={"/"} color="foreground" size="md">
+						<Link href={"/"} color="foreground" >
 							School
 						</Link>
 					</NavbarItem>
@@ -64,7 +64,7 @@ const Navbar = () => {
 			<NavbarContent className="md:flex hidden">
 				{sidebarLinks.map((link, index) => (
 					<NavbarItem key={index} isActive={link.isActive}>
-						<Link href={link.url} color="foreground" anchorIcon>
+						<Link href={link.url} color="foreground" >
 							{link.title}
 						</Link>
 					</NavbarItem>

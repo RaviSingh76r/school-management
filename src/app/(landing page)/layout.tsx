@@ -1,13 +1,13 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 
 // Custom Components
 import Navbar from "./components/Navbar";
-import { Button } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+
 
 import { ModalContextProvider, useModal } from "@/context/modalContext";
+import Loading from "./loading";
 
 const LandingPageLayout = ({
 	auth,
@@ -21,7 +21,9 @@ const LandingPageLayout = ({
 			<div>{auth}</div>
 			<div>
 				<Navbar />
-				{children}
+				<Suspense fallback={<Loading/>}>
+					{children}
+				</Suspense>
 			</div>
 		</ModalContextProvider>
 	);

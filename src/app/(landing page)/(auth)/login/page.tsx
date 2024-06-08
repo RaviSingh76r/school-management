@@ -2,6 +2,8 @@
 
 import LoginForm from "@/ui/auth/LoginForm";
 
+import { Toaster } from "react-hot-toast";
+
 const Page = () => {
 	return (
 		<div className="w-full flex items-center justify-center h-screen bg-black px-4">
@@ -12,8 +14,9 @@ const Page = () => {
 				<p className="text-center text-default-700 mb-8">
 					Please log in to your account
 				</p>
-					<LoginForm />
+				<LoginForm />
 			</div>
+			<Toaster/>
 		</div>
 	);
 };
